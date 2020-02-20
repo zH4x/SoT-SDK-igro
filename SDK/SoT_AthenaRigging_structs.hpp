@@ -1,40 +1,20 @@
 #pragma once
 
-// Sea of Thieves (1.2.6) SDK
+// Sea of Thieves (2.0) SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
 #endif
 
 #include "SoT_Basic.hpp"
-#include "SoT_Engine_classes.hpp"
+#include "SoT_AthenaRigging_enums.hpp"
 #include "SoT_CoreUObject_classes.hpp"
+#include "SoT_Engine_classes.hpp"
 #include "SoT_AthenaSocketLookup_classes.hpp"
+#include "SoT_Tethering_classes.hpp"
 
 namespace SDK
 {
-//---------------------------------------------------------------------------
-//Enums
-//---------------------------------------------------------------------------
-
-// Enum AthenaRigging.EInstancedRopeParameterType
-enum class EInstancedRopeParameterType : uint8_t
-{
-	RPT_Start                      = 0,
-	None                           = 1,
-	RPT_UVScale                    = 2,
-	None01                         = 3,
-	RPT_WindAmount                 = 4,
-	None02                         = 5,
-	StructProperty                 = 6,
-	RPT_CatenaryXYDistance         = 7,
-	None03                         = 8,
-	ECannonballIconType__Normal    = 9,
-	None04                         = 10
-};
-
-
-
 //---------------------------------------------------------------------------
 //Script Structs
 //---------------------------------------------------------------------------
@@ -188,21 +168,6 @@ struct FRiggingSystemLineGroup
 {
 	struct FName                                       Name;                                                     // 0x0000(0x0008) (Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData)
 	TArray<struct FRiggingSystemLineParams>            Lines;                                                    // 0x0008(0x0010) (Edit, BlueprintVisible, ZeroConstructor)
-};
-
-// ScriptStruct AthenaRigging.RopeAggregateTickFunction
-// 0x0018 (0x0060 - 0x0048)
-struct FRopeAggregateTickFunction : public FTickFunction
-{
-	unsigned char                                      UnknownData00[0x18];                                      // 0x0048(0x0018) MISSED OFFSET
-};
-
-// ScriptStruct AthenaRigging.RiggingSystemAggregateTickFunction
-// 0x0018 (0x0060 - 0x0048)
-struct FRiggingSystemAggregateTickFunction : public FTickFunction
-{
-	unsigned char                                      UnknownData00[0x8];                                       // 0x0048(0x0008) MISSED OFFSET
-	TArray<class ARiggingSystem*>                      RiggingSystems;                                           // 0x0050(0x0010) (ZeroConstructor)
 };
 
 // ScriptStruct AthenaRigging.RopeCatenaryLengthPair

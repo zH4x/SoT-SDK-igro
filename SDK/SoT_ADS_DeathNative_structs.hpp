@@ -1,6 +1,6 @@
 #pragma once
 
-// Sea of Thieves (1.2.6) SDK
+// Sea of Thieves (2.0) SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
@@ -16,10 +16,10 @@ namespace SDK
 //---------------------------------------------------------------------------
 
 // AnimDataEntryStruct ADS_DeathNative.ADS_DeathNative
-// 0x0020
+// 0x0028
 struct FADS_DeathNative
 {
-	struct FAthenaAnimationDeathAnimData               DeathAnims_8_E3B58DCB4D02DFD47F317CA73709A563;            // 0x0000(0x0020) (Edit, BlueprintVisible)
+	struct FAthenaAnimationDeathAnimData               DeathAnims_8_E3B58DCB4D02DFD47F317CA73709A563;            // 0x0000(0x0028) (Edit, BlueprintVisible)
 };
 
 }
