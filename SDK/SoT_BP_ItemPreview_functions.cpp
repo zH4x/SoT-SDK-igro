@@ -1,4 +1,4 @@
-// Sea of Thieves (2.0) SDK
+// Sea of Thieves (2) SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
@@ -28,22 +28,6 @@ void ABP_ItemPreview_C::UserConstructionScript()
 }
 
 
-// Function BP_ItemPreview.BP_ItemPreview_C.ReceiveBeginPlay
-// (Event, Public, BlueprintEvent)
-
-void ABP_ItemPreview_C::ReceiveBeginPlay()
-{
-	static auto fn = UObject::FindObject<UFunction>(_xor_("Function BP_ItemPreview.BP_ItemPreview_C.ReceiveBeginPlay"));
-
-	struct
-	{
-	} params;
-
-
-	UObject::ProcessEvent(fn, &params);
-}
-
-
 // Function BP_ItemPreview.BP_ItemPreview_C.ReceiveEndPlay
 // (Event, Public, BlueprintEvent)
 // Parameters:
@@ -59,6 +43,22 @@ void ABP_ItemPreview_C::ReceiveEndPlay(TEnumAsByte<EEndPlayReason> EndPlayReason
 	} params;
 
 	params.EndPlayReason = EndPlayReason;
+
+	UObject::ProcessEvent(fn, &params);
+}
+
+
+// Function BP_ItemPreview.BP_ItemPreview_C.ReceiveBeginPlay
+// (Event, Public, BlueprintEvent)
+
+void ABP_ItemPreview_C::ReceiveBeginPlay()
+{
+	static auto fn = UObject::FindObject<UFunction>(_xor_("Function BP_ItemPreview.BP_ItemPreview_C.ReceiveBeginPlay"));
+
+	struct
+	{
+	} params;
+
 
 	UObject::ProcessEvent(fn, &params);
 }

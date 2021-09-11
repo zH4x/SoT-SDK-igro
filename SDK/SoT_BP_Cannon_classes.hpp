@@ -1,6 +1,6 @@
 #pragma once
 
-// Sea of Thieves (2.0) SDK
+// Sea of Thieves (2) SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
@@ -15,14 +15,13 @@ namespace SDK
 //---------------------------------------------------------------------------
 
 // BlueprintGeneratedClass BP_Cannon.BP_Cannon_C
-// 0x0020 (0x0B38 - 0x0B18)
+// 0x0018 (0x0B70 - 0x0B58)
 class ABP_Cannon_C : public ACannon
 {
 public:
-	struct FPointerToUberGraphFrame                    UberGraphFrame;                                           // 0x0B18(0x0008) (ZeroConstructor, Transient, DuplicateTransient)
-	class UGroupedInteractableAreaComponent*           GroupedInteractableArea;                                  // 0x0B20(0x0008) (BlueprintVisible, ZeroConstructor, IsPlainOldData)
-	class UInteractableComponent*                      Interactable;                                             // 0x0B28(0x0008) (BlueprintVisible, ZeroConstructor, IsPlainOldData)
-	class UStaticMeshComponent*                        Collision;                                                // 0x0B30(0x0008) (BlueprintVisible, ZeroConstructor, IsPlainOldData)
+	class UGroupedInteractableAreaComponent*           GroupedInteractableArea;                                  // 0x0B58(0x0008) (BlueprintVisible, ZeroConstructor, IsPlainOldData)
+	class UInteractableComponent*                      Interactable;                                             // 0x0B60(0x0008) (BlueprintVisible, ZeroConstructor, IsPlainOldData)
+	class UStaticMeshComponent*                        Collision;                                                // 0x0B68(0x0008) (BlueprintVisible, ZeroConstructor, IsPlainOldData)
 
 	static UClass* StaticClass()
 	{
@@ -33,8 +32,6 @@ public:
 
 	struct FDockableInfo GetDockableInfo();
 	void UserConstructionScript();
-	void OnCannonDescLoaded(class UCannonDescAsset* CannonDesc);
-	void ExecuteUbergraph_BP_Cannon(int EntryPoint);
 };
 
 

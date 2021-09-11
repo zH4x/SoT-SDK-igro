@@ -1,4 +1,4 @@
-// Sea of Thieves (2.0) SDK
+// Sea of Thieves (2) SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
@@ -11,6 +11,38 @@ namespace SDK
 //---------------------------------------------------------------------------
 //Functions
 //---------------------------------------------------------------------------
+
+// Function AthenaDebug.DrawDebugService.OnRep_PersistentShapeChanged
+// (Final, Native, Private)
+
+void ADrawDebugService::OnRep_PersistentShapeChanged()
+{
+	static auto fn = UObject::FindObject<UFunction>(_xor_("Function AthenaDebug.DrawDebugService.OnRep_PersistentShapeChanged"));
+
+	struct
+	{
+	} params;
+
+
+	UObject::ProcessEvent(fn, &params);
+}
+
+
+// Function AthenaDebug.DrawDebugService.OnRep_IsDrawDebugActiveChanged
+// (Final, Native, Private)
+
+void ADrawDebugService::OnRep_IsDrawDebugActiveChanged()
+{
+	static auto fn = UObject::FindObject<UFunction>(_xor_("Function AthenaDebug.DrawDebugService.OnRep_IsDrawDebugActiveChanged"));
+
+	struct
+	{
+	} params;
+
+
+	UObject::ProcessEvent(fn, &params);
+}
+
 
 // Function AthenaDebug.DrawDebugService.Multicast_ClearGroup
 // (Final, Net, NetReliable, Native, Event, NetMulticast, Private)
@@ -72,21 +104,21 @@ void ADrawDebugService::Multicast_AddSpheres(TArray<struct FDrawDebugItemSphere>
 }
 
 
-// Function AthenaDebug.DrawDebugService.Multicast_AddMessages
+// Function AthenaDebug.DrawDebugService.Multicast_AddSectors
 // (Final, Net, NetReliable, Native, Event, NetMulticast, Private)
 // Parameters:
-// TArray<struct FDrawDebugItemMessage> Messages                       (ConstParm, Parm, ZeroConstructor, ReferenceParm)
+// TArray<struct FDrawDebugItemSector> Sectors                        (ConstParm, Parm, ZeroConstructor, ReferenceParm)
 
-void ADrawDebugService::Multicast_AddMessages(TArray<struct FDrawDebugItemMessage> Messages)
+void ADrawDebugService::Multicast_AddSectors(TArray<struct FDrawDebugItemSector> Sectors)
 {
-	static auto fn = UObject::FindObject<UFunction>(_xor_("Function AthenaDebug.DrawDebugService.Multicast_AddMessages"));
+	static auto fn = UObject::FindObject<UFunction>(_xor_("Function AthenaDebug.DrawDebugService.Multicast_AddSectors"));
 
 	struct
 	{
-		TArray<struct FDrawDebugItemMessage> Messages;
+		TArray<struct FDrawDebugItemSector> Sectors;
 	} params;
 
-	params.Messages = Messages;
+	params.Sectors = Sectors;
 
 	UObject::ProcessEvent(fn, &params);
 }

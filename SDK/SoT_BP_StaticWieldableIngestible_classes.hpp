@@ -1,6 +1,6 @@
 #pragma once
 
-// Sea of Thieves (2.0) SDK
+// Sea of Thieves (2.1) SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
@@ -15,15 +15,15 @@ namespace SDK
 //---------------------------------------------------------------------------
 
 // BlueprintGeneratedClass BP_StaticWieldableIngestible.BP_StaticWieldableIngestible_C
-// 0x0028 (0x0868 - 0x0840)
+// 0x0028 (0x0848 - 0x0820)
 class ABP_StaticWieldableIngestible_C : public AStaticWieldableIngestible
 {
 public:
-	class UMaterialManipulationComponent*              MaterialManipulation;                                     // 0x0840(0x0008) (BlueprintVisible, ZeroConstructor, IsPlainOldData)
-	class UPottableComponent*                          Pottable;                                                 // 0x0848(0x0008) (BlueprintVisible, ZeroConstructor, IsPlainOldData)
-	class UWieldableInteractableComponent*             WieldableInteractable;                                    // 0x0850(0x0008) (BlueprintVisible, ZeroConstructor, IsPlainOldData)
-	class UUsableWieldableComponent*                   UsableWieldable;                                          // 0x0858(0x0008) (BlueprintVisible, ZeroConstructor, IsPlainOldData)
-	class UPickupableComponent*                        Pickupable;                                               // 0x0860(0x0008) (BlueprintVisible, ZeroConstructor, IsPlainOldData)
+	class UMaterialManipulationComponent*              MaterialManipulation;                                     // 0x0820(0x0008) (BlueprintVisible, ZeroConstructor, IsPlainOldData)
+	class UPottableComponent*                          Pottable;                                                 // 0x0828(0x0008) (BlueprintVisible, ZeroConstructor, IsPlainOldData)
+	class UWieldableInteractableComponent*             WieldableInteractable;                                    // 0x0830(0x0008) (BlueprintVisible, ZeroConstructor, IsPlainOldData)
+	class UUsableWieldableComponent*                   UsableWieldable;                                          // 0x0838(0x0008) (BlueprintVisible, ZeroConstructor, IsPlainOldData)
+	class UPickupableComponent*                        Pickupable;                                               // 0x0840(0x0008) (BlueprintVisible, ZeroConstructor, IsPlainOldData)
 
 	static UClass* StaticClass()
 	{

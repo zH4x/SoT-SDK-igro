@@ -1,6 +1,6 @@
 #pragma once
 
-// Sea of Thieves (2.0) SDK
+// Sea of Thieves (2) SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
@@ -8,13 +8,13 @@
 
 #include "SoT_Basic.hpp"
 #include "SoT_AIShips_enums.hpp"
-#include "SoT_AIModule_classes.hpp"
 #include "SoT_CoreUObject_classes.hpp"
 #include "SoT_Engine_classes.hpp"
 #include "SoT_Athena_classes.hpp"
 #include "SoT_AthenaAI_classes.hpp"
-#include "SoT_Maths_classes.hpp"
+#include "SoT_AIModule_classes.hpp"
 #include "SoT_AthenaEngine_classes.hpp"
+#include "SoT_Maths_classes.hpp"
 
 namespace SDK
 {
@@ -351,7 +351,7 @@ struct FCursedSailsBattleParams
 // 0x0010
 struct FAIShipDespawnedEvent
 {
-	class AShip*                                       Ship;                                                     // 0x0000(0x0008) (BlueprintVisible, BlueprintReadOnly, ZeroConstructor, IsPlainOldData)
+	class AActor*                                      Ship;                                                     // 0x0000(0x0008) (BlueprintVisible, BlueprintReadOnly, ZeroConstructor, IsPlainOldData)
 	TEnumAsByte<EAIShipDestructionReason>              ShipDestructionReason;                                    // 0x0008(0x0001) (BlueprintVisible, BlueprintReadOnly, ZeroConstructor, IsPlainOldData)
 	unsigned char                                      UnknownData00[0x7];                                       // 0x0009(0x0007) MISSED OFFSET
 };

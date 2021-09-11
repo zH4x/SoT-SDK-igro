@@ -1,4 +1,4 @@
-// Sea of Thieves (2.0) SDK
+// Sea of Thieves (2) SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
@@ -194,6 +194,42 @@ class UAnimationData* UAnimationDataStoreInterface::GetAnimationDataForId(class 
 }
 
 
+// Function Animation.CosmeticItemAnimationComponent.SpawnCosmeticItem
+// (Final, Native, Public, BlueprintCallable)
+// Parameters:
+// class USkeletalMeshComponent*  MeshComponent                  (Parm, ZeroConstructor, InstancedReference, IsPlainOldData)
+// class UClass*                  ObjectToSpawn                  (Parm, ZeroConstructor, IsPlainOldData)
+// TEnumAsByte<EWieldAnimationLocation> SpawnLocation                  (ConstParm, Parm, ZeroConstructor, IsPlainOldData)
+// class UCosmeticItemAnimationSetDataAsset* CosmeticData                   (Parm, ZeroConstructor, IsPlainOldData)
+// bool                           SpawnHidden                    (ConstParm, Parm, ZeroConstructor, IsPlainOldData)
+// bool                           ReturnValue                    (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData)
+
+bool UCosmeticItemAnimationComponent::SpawnCosmeticItem(class USkeletalMeshComponent* MeshComponent, class UClass* ObjectToSpawn, TEnumAsByte<EWieldAnimationLocation> SpawnLocation, class UCosmeticItemAnimationSetDataAsset* CosmeticData, bool SpawnHidden)
+{
+	static auto fn = UObject::FindObject<UFunction>(_xor_("Function Animation.CosmeticItemAnimationComponent.SpawnCosmeticItem"));
+
+	struct
+	{
+		class USkeletalMeshComponent*  MeshComponent;
+		class UClass*                  ObjectToSpawn;
+		TEnumAsByte<EWieldAnimationLocation> SpawnLocation;
+		class UCosmeticItemAnimationSetDataAsset* CosmeticData;
+		bool                           SpawnHidden;
+		bool                           ReturnValue;
+	} params;
+
+	params.MeshComponent = MeshComponent;
+	params.ObjectToSpawn = ObjectToSpawn;
+	params.SpawnLocation = SpawnLocation;
+	params.CosmeticData = CosmeticData;
+	params.SpawnHidden = SpawnHidden;
+
+	UObject::ProcessEvent(fn, &params);
+
+	return params.ReturnValue;
+}
+
+
 // Function Animation.CosmeticItemAnimationComponent.DestroyAllCosmeticItems
 // (Native, Public, BlueprintCallable)
 
@@ -205,6 +241,26 @@ void UCosmeticItemAnimationComponent::DestroyAllCosmeticItems()
 	{
 	} params;
 
+
+	UObject::ProcessEvent(fn, &params);
+}
+
+
+// Function Animation.CustomAnimationMontageComponent.OnRep_ReplicatedData
+// (Final, Native, Private, HasOutParms)
+// Parameters:
+// struct FCustomAnimationMontageComponentReplicatedData PriorData                      (ConstParm, Parm, OutParm, ReferenceParm)
+
+void UCustomAnimationMontageComponent::OnRep_ReplicatedData(const struct FCustomAnimationMontageComponentReplicatedData& PriorData)
+{
+	static auto fn = UObject::FindObject<UFunction>(_xor_("Function Animation.CustomAnimationMontageComponent.OnRep_ReplicatedData"));
+
+	struct
+	{
+		struct FCustomAnimationMontageComponentReplicatedData PriorData;
+	} params;
+
+	params.PriorData = PriorData;
 
 	UObject::ProcessEvent(fn, &params);
 }
@@ -984,9 +1040,10 @@ float ULocomotionFunctionLib::UpdateControllerSpineRotation(const struct FRotato
 // float                          BaseMaxWalkSpeed               (ConstParm, Parm, ZeroConstructor, IsPlainOldData)
 // float                          SpeedBlendValue                (ConstParm, Parm, ZeroConstructor, IsPlainOldData)
 // bool                           IsSwimming                     (ConstParm, Parm, ZeroConstructor, IsPlainOldData)
+// float                          DeadZone                       (ConstParm, Parm, ZeroConstructor, IsPlainOldData)
 // struct FActorVelocityData      ReturnValue                    (Parm, OutParm, ReturnParm)
 
-struct FActorVelocityData ULocomotionFunctionLib::UpdateCharacterSpeed(const struct FVector& Velocity, float CurrentMaxWalkSpeed, float WantedMovementSpeed, float BaseMaxWalkSpeed, float SpeedBlendValue, bool IsSwimming)
+struct FActorVelocityData ULocomotionFunctionLib::UpdateCharacterSpeed(const struct FVector& Velocity, float CurrentMaxWalkSpeed, float WantedMovementSpeed, float BaseMaxWalkSpeed, float SpeedBlendValue, bool IsSwimming, float DeadZone)
 {
 	static auto fn = UObject::FindObject<UFunction>(_xor_("Function Animation.LocomotionFunctionLib.UpdateCharacterSpeed"));
 
@@ -998,6 +1055,7 @@ struct FActorVelocityData ULocomotionFunctionLib::UpdateCharacterSpeed(const str
 		float                          BaseMaxWalkSpeed;
 		float                          SpeedBlendValue;
 		bool                           IsSwimming;
+		float                          DeadZone;
 		struct FActorVelocityData      ReturnValue;
 	} params;
 
@@ -1007,6 +1065,7 @@ struct FActorVelocityData ULocomotionFunctionLib::UpdateCharacterSpeed(const str
 	params.BaseMaxWalkSpeed = BaseMaxWalkSpeed;
 	params.SpeedBlendValue = SpeedBlendValue;
 	params.IsSwimming = IsSwimming;
+	params.DeadZone = DeadZone;
 
 	static auto defaultObj = StaticClass()->CreateDefaultObject();
 	defaultObj->ProcessEvent(fn, &params);

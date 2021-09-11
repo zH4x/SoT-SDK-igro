@@ -1,6 +1,6 @@
 #pragma once
 
-// Sea of Thieves (2.0) SDK
+// Sea of Thieves (2) SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
@@ -15,10 +15,11 @@ namespace SDK
 //---------------------------------------------------------------------------
 
 // Class StatusEffects.StatusBase
-// 0x0000 (0x0028 - 0x0028)
+// 0x0008 (0x0030 - 0x0028)
 class UStatusBase : public UObject
 {
 public:
+	unsigned char                                      UnknownData00[0x8];                                       // 0x0028(0x0008) MISSED OFFSET
 
 	static UClass* StaticClass()
 	{
@@ -30,10 +31,11 @@ public:
 
 
 // Class StatusEffects.StatusResponse
-// 0x0000 (0x0028 - 0x0028)
+// 0x0008 (0x0030 - 0x0028)
 class UStatusResponse : public UObject
 {
 public:
+	unsigned char                                      UnknownData00[0x8];                                       // 0x0028(0x0008) MISSED OFFSET
 
 	static UClass* StaticClass()
 	{
@@ -59,6 +61,39 @@ public:
 };
 
 
+// Class StatusEffects.BuffReceiverInterface
+// 0x0000 (0x0028 - 0x0028)
+class UBuffReceiverInterface : public UInterface
+{
+public:
+
+	static UClass* StaticClass()
+	{
+		static auto ptr = UObject::FindObject<UClass>(_xor_("Class StatusEffects.BuffReceiverInterface"));
+		return ptr;
+	}
+
+};
+
+
+// Class StatusEffects.BuffReceiverComponent
+// 0x0010 (0x00D8 - 0x00C8)
+class UBuffReceiverComponent : public UActorComponent
+{
+public:
+	unsigned char                                      UnknownData00[0x8];                                       // 0x00C8(0x0008) MISSED OFFSET
+	bool                                               CanReceiveBuff;                                           // 0x00D0(0x0001) (ZeroConstructor, Transient, IsPlainOldData)
+	unsigned char                                      UnknownData01[0x7];                                       // 0x00D1(0x0007) MISSED OFFSET
+
+	static UClass* StaticClass()
+	{
+		static auto ptr = UObject::FindObject<UClass>(_xor_("Class StatusEffects.BuffReceiverComponent"));
+		return ptr;
+	}
+
+};
+
+
 // Class StatusEffects.DebugMenuStatusDataAsset
 // 0x0020 (0x0048 - 0x0028)
 class UDebugMenuStatusDataAsset : public UDataAsset
@@ -77,15 +112,15 @@ public:
 
 
 // Class StatusEffects.StatusEffectOverlapZone
-// 0x0028 (0x0438 - 0x0410)
+// 0x00C8 (0x0498 - 0x03D0)
 class AStatusEffectOverlapZone : public AActor
 {
 public:
-	class UDebugStatusEffectOverlapZoneVisualizerComponent* DebugVisualizerComponent;                                 // 0x0410(0x0008) (ExportObject, ZeroConstructor, Transient, InstancedReference, IsPlainOldData)
-	class UBoxComponent*                               CollisionMesh;                                            // 0x0418(0x0008) (Edit, ExportObject, ZeroConstructor, InstancedReference, IsPlainOldData)
-	TArray<struct FDelayedStatusEffect>                StatusesToApplyOnOverlap;                                 // 0x0420(0x0010) (Edit, ZeroConstructor)
-	bool                                               StartActive;                                              // 0x0430(0x0001) (Edit, ZeroConstructor, IsPlainOldData)
-	unsigned char                                      UnknownData00[0x7];                                       // 0x0431(0x0007) MISSED OFFSET
+	unsigned char                                      UnknownData00[0xA8];                                      // 0x03D0(0x00A8) MISSED OFFSET
+	class UBoxComponent*                               CollisionMesh;                                            // 0x0478(0x0008) (Edit, ExportObject, ZeroConstructor, InstancedReference, IsPlainOldData)
+	TArray<struct FDelayedStatusEffect>                StatusesToApplyOnOverlap;                                 // 0x0480(0x0010) (Edit, ZeroConstructor)
+	bool                                               StartActive;                                              // 0x0490(0x0001) (Edit, ZeroConstructor, IsPlainOldData)
+	unsigned char                                      UnknownData01[0x7];                                       // 0x0491(0x0007) MISSED OFFSET
 
 	static UClass* StaticClass()
 	{
@@ -122,11 +157,11 @@ public:
 
 
 // Class StatusEffects.DebugStatusTicketHolder
-// 0x0008 (0x0418 - 0x0410)
+// 0x0008 (0x03D8 - 0x03D0)
 class ADebugStatusTicketHolder : public AActor
 {
 public:
-	class AActor*                                      StatusRecipient;                                          // 0x0410(0x0008) (ZeroConstructor, IsPlainOldData)
+	class AActor*                                      StatusRecipient;                                          // 0x03D0(0x0008) (ZeroConstructor, IsPlainOldData)
 
 	static UClass* StaticClass()
 	{
@@ -198,12 +233,13 @@ public:
 
 
 // Class StatusEffects.StatusResponseAsset
-// 0x0020 (0x0048 - 0x0028)
+// 0x0058 (0x0080 - 0x0028)
 class UStatusResponseAsset : public UDataAsset
 {
 public:
-	TArray<class UClass*>                              TriggerStatus;                                            // 0x0028(0x0010) (Edit, ZeroConstructor)
-	TArray<class UStatusResponse*>                     Responses;                                                // 0x0038(0x0010) (Edit, ExportObject, ZeroConstructor)
+	struct FText                                       HighFrequencyTriggerStatusHelper;                         // 0x0028(0x0038) (Edit, EditConst)
+	TArray<class UClass*>                              TriggerStatus;                                            // 0x0060(0x0010) (Edit, ZeroConstructor)
+	TArray<class UStatusResponse*>                     Responses;                                                // 0x0070(0x0010) (Edit, ExportObject, ZeroConstructor)
 
 	static UClass* StaticClass()
 	{
@@ -249,7 +285,7 @@ public:
 
 
 	void OnRep_ActiveEffects(TArray<struct FActiveStatusEffect> OldEffects);
-	void MultiCast_ApplyOneShotStatus(TArray<struct FActiveStatusEffect> ActivatedEffects);
+	void MultiCast_ApplyOneShotStatus(TArray<struct FActiveStatusEffect> AddedEffects, TArray<struct FActiveStatusEffect> RemovedEffects);
 };
 
 
@@ -302,6 +338,74 @@ public:
 };
 
 
+// Class StatusEffects.SphericalStatusEffectZone
+// 0x00B8 (0x0488 - 0x03D0)
+class ASphericalStatusEffectZone : public AActor
+{
+public:
+	unsigned char                                      UnknownData00[0x8];                                       // 0x03D0(0x0008) MISSED OFFSET
+	class USphereComponent*                            SphereComponent;                                          // 0x03D8(0x0008) (Edit, ExportObject, ZeroConstructor, EditConst, InstancedReference, IsPlainOldData)
+	class UStatusEffectVolumeComponent*                StatusEffectVolumeComponent;                              // 0x03E0(0x0008) (Edit, ExportObject, ZeroConstructor, EditConst, InstancedReference, IsPlainOldData)
+	unsigned char                                      UnknownData01[0xA0];                                      // 0x03E8(0x00A0) MISSED OFFSET
+
+	static UClass* StaticClass()
+	{
+		static auto ptr = UObject::FindObject<UClass>(_xor_("Class StatusEffects.SphericalStatusEffectZone"));
+		return ptr;
+	}
+
+};
+
+
+// Class StatusEffects.StatusApplicationDesc
+// 0x0020 (0x0048 - 0x0028)
+class UStatusApplicationDesc : public UObject
+{
+public:
+	struct FEventAppliedStatusToTargets                ApplicationEvent;                                         // 0x0028(0x0020)
+
+	static UClass* StaticClass()
+	{
+		static auto ptr = UObject::FindObject<UClass>(_xor_("Class StatusEffects.StatusApplicationDesc"));
+		return ptr;
+	}
+
+};
+
+
+// Class StatusEffects.StatusApplicationMonitorComponent
+// 0x0008 (0x00D0 - 0x00C8)
+class UStatusApplicationMonitorComponent : public UActorComponent
+{
+public:
+	class UClass*                                      StatusApplicationTrigger;                                 // 0x00C8(0x0008) (Edit, ZeroConstructor, DisableEditOnInstance, IsPlainOldData)
+
+	static UClass* StaticClass()
+	{
+		static auto ptr = UObject::FindObject<UClass>(_xor_("Class StatusEffects.StatusApplicationMonitorComponent"));
+		return ptr;
+	}
+
+};
+
+
+// Class StatusEffects.StatusEffectHelperFunctionLibrary
+// 0x0000 (0x0028 - 0x0028)
+class UStatusEffectHelperFunctionLibrary : public UBlueprintFunctionLibrary
+{
+public:
+
+	static UClass* StaticClass()
+	{
+		static auto ptr = UObject::FindObject<UClass>(_xor_("Class StatusEffects.StatusEffectHelperFunctionLibrary"));
+		return ptr;
+	}
+
+
+	static void ApplyOneShotStatus(class AActor* Recipient, const struct FStatus& Status);
+};
+
+
 // Class StatusEffects.StatusEffectTicketDispenserInterface
 // 0x0000 (0x0028 - 0x0028)
 class UStatusEffectTicketDispenserInterface : public UInterface
@@ -334,7 +438,7 @@ public:
 
 
 	void OnRep_ActiveEffects(TArray<struct FActiveStatusEffect> OldEffects);
-	void MultiCast_ApplyOneShotStatus(TArray<struct FActiveStatusEffect> ActivatedEffects);
+	void MultiCast_ApplyOneShotStatus(TArray<struct FActiveStatusEffect> AddedEffects, TArray<struct FActiveStatusEffect> RemovedEffects);
 };
 
 
@@ -379,6 +483,63 @@ public:
 	static UClass* StaticClass()
 	{
 		static auto ptr = UObject::FindObject<UClass>(_xor_("Class StatusEffects.StatusEffectsSettings"));
+		return ptr;
+	}
+
+};
+
+
+// Class StatusEffects.StatusEffectVolumeComponent
+// 0x0020 (0x02D0 - 0x02B0)
+class UStatusEffectVolumeComponent : public USceneComponent
+{
+public:
+	bool                                               UseOverlapEventsFromParentComponent;                      // 0x02B0(0x0001) (Edit, ZeroConstructor, DisableEditOnInstance, IsPlainOldData)
+	unsigned char                                      UnknownData00[0x7];                                       // 0x02B1(0x0007) MISSED OFFSET
+	TArray<struct FStatus>                             StatusEffectsToMaintain;                                  // 0x02B8(0x0010) (Edit, ZeroConstructor)
+	unsigned char                                      UnknownData01[0x8];                                       // 0x02C8(0x0008) MISSED OFFSET
+
+	static UClass* StaticClass()
+	{
+		static auto ptr = UObject::FindObject<UClass>(_xor_("Class StatusEffects.StatusEffectVolumeComponent"));
+		return ptr;
+	}
+
+
+	void UnaffectActor(class AActor* Actor);
+	void OnParentComponentEndOverlap(class AActor* OtherActor, class UPrimitiveComponent* OtherComp, int OtherBodyIndex);
+	void OnParentComponentBeginOverlap(class AActor* OtherActor, class UPrimitiveComponent* OtherComp, int OtherBodyIndex, bool bFromSweep, const struct FHitResult& SweepResult);
+	void AffectActor(class AActor* Actor);
+};
+
+
+// Class StatusEffects.SetCanReceiveBuffStatusResponse
+// 0x0008 (0x0038 - 0x0030)
+class USetCanReceiveBuffStatusResponse : public UStatusResponse
+{
+public:
+	bool                                               LockBuffReceiver;                                         // 0x0030(0x0001) (Edit, ZeroConstructor, IsPlainOldData)
+	bool                                               RevertOnDeactivate;                                       // 0x0031(0x0001) (Edit, ZeroConstructor, IsPlainOldData)
+	unsigned char                                      UnknownData00[0x6];                                       // 0x0032(0x0006) MISSED OFFSET
+
+	static UClass* StaticClass()
+	{
+		static auto ptr = UObject::FindObject<UClass>(_xor_("Class StatusEffects.SetCanReceiveBuffStatusResponse"));
+		return ptr;
+	}
+
+};
+
+
+// Class StatusEffects.StatusResponseNull
+// 0x0000 (0x0030 - 0x0030)
+class UStatusResponseNull : public UStatusResponse
+{
+public:
+
+	static UClass* StaticClass()
+	{
+		static auto ptr = UObject::FindObject<UClass>(_xor_("Class StatusEffects.StatusResponseNull"));
 		return ptr;
 	}
 

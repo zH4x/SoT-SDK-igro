@@ -1,6 +1,6 @@
 #pragma once
 
-// Sea of Thieves (2.0) SDK
+// Sea of Thieves (2) SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
@@ -9,8 +9,8 @@
 #include "SoT_Basic.hpp"
 #include "SoT_PrioritisedPrompts_enums.hpp"
 #include "SoT_Engine_classes.hpp"
-#include "SoT_CoreUObject_classes.hpp"
 #include "SoT_ObjectMessaging_classes.hpp"
+#include "SoT_CoreUObject_classes.hpp"
 #include "SoT_Athena_classes.hpp"
 
 namespace SDK
@@ -63,9 +63,16 @@ struct FPermanentPromptNetworkEvent : public FNetworkEventStruct
 	unsigned char                                      UnknownData00[0x7];                                       // 0x0079(0x0007) MISSED OFFSET
 };
 
-// ScriptStruct PrioritisedPrompts.PromptTelemetryEvent
+// ScriptStruct PrioritisedPrompts.PromptsCounterIncrementEvent
+// 0x0008
+struct FPromptsCounterIncrementEvent
+{
+	class UClass*                                      AccessKey;                                                // 0x0000(0x0008) (Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData)
+};
+
+// ScriptStruct PrioritisedPrompts.PlayerPromptTelemetryEvent
 // 0x0020
-struct FPromptTelemetryEvent
+struct FPlayerPromptTelemetryEvent
 {
 	class FString                                      Message;                                                  // 0x0000(0x0010) (ZeroConstructor)
 	class FString                                      Key;                                                      // 0x0010(0x0010) (ZeroConstructor)

@@ -1,4 +1,4 @@
-// Sea of Thieves (2.0) SDK
+// Sea of Thieves (2) SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
@@ -116,6 +116,157 @@ struct FGuid UTaleQuestMerchantContractsService::AddContract(TArray<struct FTale
 	params.Requests = Requests;
 	params.InDeliveryDestination = InDeliveryDestination;
 	params.InTimeLimit = InTimeLimit;
+
+	UObject::ProcessEvent(fn, &params);
+
+	return params.ReturnValue;
+}
+
+
+// Function Tales.TaleQuestSelectorServiceBlueprintFunctionLibrary.SetDebugVoyageSeed
+// (Final, Native, Static, Public, BlueprintCallable)
+// Parameters:
+// int                            Seed                           (ConstParm, Parm, ZeroConstructor, IsPlainOldData)
+
+void UTaleQuestSelectorServiceBlueprintFunctionLibrary::SetDebugVoyageSeed(int Seed)
+{
+	static auto fn = UObject::FindObject<UFunction>(_xor_("Function Tales.TaleQuestSelectorServiceBlueprintFunctionLibrary.SetDebugVoyageSeed"));
+
+	struct
+	{
+		int                            Seed;
+	} params;
+
+	params.Seed = Seed;
+
+	static auto defaultObj = StaticClass()->CreateDefaultObject();
+	defaultObj->ProcessEvent(fn, &params);
+}
+
+
+// Function Tales.TaleQuestSelectorServiceBlueprintFunctionLibrary.ResetVoyageDebugSeed
+// (Final, Native, Static, Public, BlueprintCallable)
+
+void UTaleQuestSelectorServiceBlueprintFunctionLibrary::ResetVoyageDebugSeed()
+{
+	static auto fn = UObject::FindObject<UFunction>(_xor_("Function Tales.TaleQuestSelectorServiceBlueprintFunctionLibrary.ResetVoyageDebugSeed"));
+
+	struct
+	{
+	} params;
+
+
+	static auto defaultObj = StaticClass()->CreateDefaultObject();
+	defaultObj->ProcessEvent(fn, &params);
+}
+
+
+// Function Tales.CutsceneResponsesTaleService.TrackResponseCoordinator
+// (Final, BlueprintAuthorityOnly, Native, Public, BlueprintCallable)
+// Parameters:
+// class UCutsceneResponseCoordinator* Coordinator                    (Parm, ZeroConstructor, IsPlainOldData)
+
+void UCutsceneResponsesTaleService::TrackResponseCoordinator(class UCutsceneResponseCoordinator* Coordinator)
+{
+	static auto fn = UObject::FindObject<UFunction>(_xor_("Function Tales.CutsceneResponsesTaleService.TrackResponseCoordinator"));
+
+	struct
+	{
+		class UCutsceneResponseCoordinator* Coordinator;
+	} params;
+
+	params.Coordinator = Coordinator;
+
+	UObject::ProcessEvent(fn, &params);
+}
+
+
+// Function Tales.CutsceneResponsesTaleService.StartCutsceneResponseSheet
+// (Final, BlueprintAuthorityOnly, Native, Public, BlueprintCallable)
+// Parameters:
+// class AActor*                  TargetActor                    (Parm, ZeroConstructor, IsPlainOldData)
+// TScriptInterface<class UCutsceneResponsePlayerInterface> CutsceneResponsePlayer         (Parm, ZeroConstructor, IsPlainOldData)
+// class UClass*                  ResponseSheetClass             (Parm, ZeroConstructor, IsPlainOldData)
+// class UCutsceneResponseSheet*  ReturnValue                    (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData)
+
+class UCutsceneResponseSheet* UCutsceneResponsesTaleService::StartCutsceneResponseSheet(class AActor* TargetActor, const TScriptInterface<class UCutsceneResponsePlayerInterface>& CutsceneResponsePlayer, class UClass* ResponseSheetClass)
+{
+	static auto fn = UObject::FindObject<UFunction>(_xor_("Function Tales.CutsceneResponsesTaleService.StartCutsceneResponseSheet"));
+
+	struct
+	{
+		class AActor*                  TargetActor;
+		TScriptInterface<class UCutsceneResponsePlayerInterface> CutsceneResponsePlayer;
+		class UClass*                  ResponseSheetClass;
+		class UCutsceneResponseSheet*  ReturnValue;
+	} params;
+
+	params.TargetActor = TargetActor;
+	params.CutsceneResponsePlayer = CutsceneResponsePlayer;
+	params.ResponseSheetClass = ResponseSheetClass;
+
+	UObject::ProcessEvent(fn, &params);
+
+	return params.ReturnValue;
+}
+
+
+// Function Tales.CutsceneResponsesTaleService.ClearAllActiveResponseSheets
+// (Final, BlueprintAuthorityOnly, Native, Public, BlueprintCallable)
+
+void UCutsceneResponsesTaleService::ClearAllActiveResponseSheets()
+{
+	static auto fn = UObject::FindObject<UFunction>(_xor_("Function Tales.CutsceneResponsesTaleService.ClearAllActiveResponseSheets"));
+
+	struct
+	{
+	} params;
+
+
+	UObject::ProcessEvent(fn, &params);
+}
+
+
+// Function Tales.CutsceneResponsesTaleService.AddResponseSheetRelevantActor
+// (Final, BlueprintAuthorityOnly, Native, Public, BlueprintCallable)
+// Parameters:
+// class AActor*                  Actor                          (Parm, ZeroConstructor, IsPlainOldData)
+
+void UCutsceneResponsesTaleService::AddResponseSheetRelevantActor(class AActor* Actor)
+{
+	static auto fn = UObject::FindObject<UFunction>(_xor_("Function Tales.CutsceneResponsesTaleService.AddResponseSheetRelevantActor"));
+
+	struct
+	{
+		class AActor*                  Actor;
+	} params;
+
+	params.Actor = Actor;
+
+	UObject::ProcessEvent(fn, &params);
+}
+
+
+// Function Tales.TaleQuestSelectorService.GetRandomIntegerInRange
+// (Final, Native, Public, BlueprintCallable, BlueprintPure)
+// Parameters:
+// int                            Minimum                        (ConstParm, Parm, ZeroConstructor, IsPlainOldData)
+// int                            Maximum                        (ConstParm, Parm, ZeroConstructor, IsPlainOldData)
+// int                            ReturnValue                    (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData)
+
+int UTaleQuestSelectorService::GetRandomIntegerInRange(int Minimum, int Maximum)
+{
+	static auto fn = UObject::FindObject<UFunction>(_xor_("Function Tales.TaleQuestSelectorService.GetRandomIntegerInRange"));
+
+	struct
+	{
+		int                            Minimum;
+		int                            Maximum;
+		int                            ReturnValue;
+	} params;
+
+	params.Minimum = Minimum;
+	params.Maximum = Maximum;
 
 	UObject::ProcessEvent(fn, &params);
 

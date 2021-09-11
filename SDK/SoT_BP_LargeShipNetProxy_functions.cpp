@@ -1,4 +1,4 @@
-// Sea of Thieves (2.0) SDK
+// Sea of Thieves (2) SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
@@ -141,6 +141,26 @@ void ABP_LargeShipNetProxy_C::OnLanternStateChanged(int LanternStateBits)
 	} params;
 
 	params.LanternStateBits = LanternStateBits;
+
+	UObject::ProcessEvent(fn, &params);
+}
+
+
+// Function BP_LargeShipNetProxy.BP_LargeShipNetProxy_C.OnEmissaryActiveStateChanged
+// (Event, Protected, BlueprintEvent)
+// Parameters:
+// bool                           InNewEmissaryActiveState       (ConstParm, Parm, ZeroConstructor, IsPlainOldData)
+
+void ABP_LargeShipNetProxy_C::OnEmissaryActiveStateChanged(bool InNewEmissaryActiveState)
+{
+	static auto fn = UObject::FindObject<UFunction>(_xor_("Function BP_LargeShipNetProxy.BP_LargeShipNetProxy_C.OnEmissaryActiveStateChanged"));
+
+	struct
+	{
+		bool                           InNewEmissaryActiveState;
+	} params;
+
+	params.InNewEmissaryActiveState = InNewEmissaryActiveState;
 
 	UObject::ProcessEvent(fn, &params);
 }

@@ -1,4 +1,4 @@
-// Sea of Thieves (2.0) SDK
+// Sea of Thieves (2) SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
@@ -23,62 +23,6 @@ void ABP_Goldhoarder_C::UserConstructionScript()
 	{
 	} params;
 
-
-	UObject::ProcessEvent(fn, &params);
-}
-
-
-// Function BP_Goldhoarder.BP_Goldhoarder_C.ReceiveBeginPlay
-// (Event, Public, BlueprintEvent)
-
-void ABP_Goldhoarder_C::ReceiveBeginPlay()
-{
-	static auto fn = UObject::FindObject<UFunction>(_xor_("Function BP_Goldhoarder.BP_Goldhoarder_C.ReceiveBeginPlay"));
-
-	struct
-	{
-	} params;
-
-
-	UObject::ProcessEvent(fn, &params);
-}
-
-
-// Function BP_Goldhoarder.BP_Goldhoarder_C.ReceiveTick
-// (Event, Public, BlueprintEvent)
-// Parameters:
-// float                          DeltaSeconds                   (Parm, ZeroConstructor, IsPlainOldData)
-
-void ABP_Goldhoarder_C::ReceiveTick(float DeltaSeconds)
-{
-	static auto fn = UObject::FindObject<UFunction>(_xor_("Function BP_Goldhoarder.BP_Goldhoarder_C.ReceiveTick"));
-
-	struct
-	{
-		float                          DeltaSeconds;
-	} params;
-
-	params.DeltaSeconds = DeltaSeconds;
-
-	UObject::ProcessEvent(fn, &params);
-}
-
-
-// Function BP_Goldhoarder.BP_Goldhoarder_C.ExecuteUbergraph_BP_Goldhoarder
-// ()
-// Parameters:
-// int                            EntryPoint                     (Parm, ZeroConstructor, IsPlainOldData)
-
-void ABP_Goldhoarder_C::ExecuteUbergraph_BP_Goldhoarder(int EntryPoint)
-{
-	static auto fn = UObject::FindObject<UFunction>(_xor_("Function BP_Goldhoarder.BP_Goldhoarder_C.ExecuteUbergraph_BP_Goldhoarder"));
-
-	struct
-	{
-		int                            EntryPoint;
-	} params;
-
-	params.EntryPoint = EntryPoint;
 
 	UObject::ProcessEvent(fn, &params);
 }

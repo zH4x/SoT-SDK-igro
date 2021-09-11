@@ -1,4 +1,4 @@
-// Sea of Thieves (2.0) SDK
+// Sea of Thieves (2.1) SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
@@ -46,15 +46,19 @@ void ABP_BaseLockableCollectorsChest_Proxy_C::ReceiveBeginPlay()
 
 // Function BP_BaseLockableCollectorsChest_Proxy.BP_BaseLockableCollectorsChest_Proxy_C.BndEvt__Lock_K2Node_ComponentBoundEvent_12_OnLockOpenedDelegate__DelegateSignature
 // (BlueprintEvent)
+// Parameters:
+// class AActor*                  Interactor                     (ConstParm, Parm, ZeroConstructor, IsPlainOldData)
 
-void ABP_BaseLockableCollectorsChest_Proxy_C::BndEvt__Lock_K2Node_ComponentBoundEvent_12_OnLockOpenedDelegate__DelegateSignature()
+void ABP_BaseLockableCollectorsChest_Proxy_C::BndEvt__Lock_K2Node_ComponentBoundEvent_12_OnLockOpenedDelegate__DelegateSignature(class AActor* Interactor)
 {
 	static auto fn = UObject::FindObject<UFunction>(_xor_("Function BP_BaseLockableCollectorsChest_Proxy.BP_BaseLockableCollectorsChest_Proxy_C.BndEvt__Lock_K2Node_ComponentBoundEvent_12_OnLockOpenedDelegate__DelegateSignature"));
 
 	struct
 	{
+		class AActor*                  Interactor;
 	} params;
 
+	params.Interactor = Interactor;
 
 	UObject::ProcessEvent(fn, &params);
 }

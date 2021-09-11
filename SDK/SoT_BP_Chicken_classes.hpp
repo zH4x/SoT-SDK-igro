@@ -1,6 +1,6 @@
 #pragma once
 
-// Sea of Thieves (2.0) SDK
+// Sea of Thieves (2.1) SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
@@ -15,13 +15,13 @@ namespace SDK
 //---------------------------------------------------------------------------
 
 // BlueprintGeneratedClass BP_Chicken.BP_Chicken_C
-// 0x0018 (0x0B78 - 0x0B60)
+// 0x0018 (0x0B48 - 0x0B30)
 class ABP_Chicken_C : public ABP_Fauna_C
 {
 public:
-	struct FPointerToUberGraphFrame                    UberGraphFrame;                                           // 0x0B60(0x0008) (ZeroConstructor, Transient, DuplicateTransient)
-	class UAIItemSpawnComponent*                       AIItemSpawn;                                              // 0x0B68(0x0008) (BlueprintVisible, ZeroConstructor, IsPlainOldData)
-	class USkeletalMeshComponent*                      ChickenSkeletalMesh;                                      // 0x0B70(0x0008) (Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData)
+	struct FPointerToUberGraphFrame                    UberGraphFrame;                                           // 0x0B30(0x0008) (ZeroConstructor, Transient, DuplicateTransient)
+	class UAIItemSpawnComponent*                       AIItemSpawn;                                              // 0x0B38(0x0008) (BlueprintVisible, ZeroConstructor, IsPlainOldData)
+	class USkeletalMeshComponent*                      ChickenSkeletalMesh;                                      // 0x0B40(0x0008) (Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData)
 
 	static UClass* StaticClass()
 	{

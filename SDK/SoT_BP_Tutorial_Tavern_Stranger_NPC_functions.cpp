@@ -1,4 +1,4 @@
-// Sea of Thieves (2.0) SDK
+// Sea of Thieves (2) SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
@@ -115,6 +115,22 @@ void ABP_Tutorial_Tavern_Stranger_NPC_C::ReceiveEndPlay(TEnumAsByte<EEndPlayReas
 	} params;
 
 	params.EndPlayReason = EndPlayReason;
+
+	UObject::ProcessEvent(fn, &params);
+}
+
+
+// Function BP_Tutorial_Tavern_Stranger_NPC.BP_Tutorial_Tavern_Stranger_NPC_C.CleanTutorialCutScene
+// (Event, Protected, BlueprintCallable, BlueprintEvent)
+
+void ABP_Tutorial_Tavern_Stranger_NPC_C::CleanTutorialCutScene()
+{
+	static auto fn = UObject::FindObject<UFunction>(_xor_("Function BP_Tutorial_Tavern_Stranger_NPC.BP_Tutorial_Tavern_Stranger_NPC_C.CleanTutorialCutScene"));
+
+	struct
+	{
+	} params;
+
 
 	UObject::ProcessEvent(fn, &params);
 }

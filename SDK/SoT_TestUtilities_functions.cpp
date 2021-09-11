@@ -1,4 +1,4 @@
-// Sea of Thieves (2.0) SDK
+// Sea of Thieves (2.1) SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
@@ -23,6 +23,26 @@ void UDelegateTester::Callback()
 	{
 	} params;
 
+
+	UObject::ProcessEvent(fn, &params);
+}
+
+
+// Function TestUtilities.DelegateTesterWithFNameParam.Callback
+// (Final, RequiredAPI, Native, Public, HasOutParms)
+// Parameters:
+// struct FName                   InParam                        (ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm, IsPlainOldData)
+
+void UDelegateTesterWithFNameParam::Callback(const struct FName& InParam)
+{
+	static auto fn = UObject::FindObject<UFunction>(_xor_("Function TestUtilities.DelegateTesterWithFNameParam.Callback"));
+
+	struct
+	{
+		struct FName                   InParam;
+	} params;
+
+	params.InParam = InParam;
 
 	UObject::ProcessEvent(fn, &params);
 }

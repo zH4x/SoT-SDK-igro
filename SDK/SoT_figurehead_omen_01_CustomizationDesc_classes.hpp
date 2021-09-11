@@ -1,6 +1,6 @@
 #pragma once
 
-// Sea of Thieves (2.0) SDK
+// Sea of Thieves (2) SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
@@ -15,7 +15,7 @@ namespace SDK
 //---------------------------------------------------------------------------
 
 // BlueprintGeneratedClass figurehead_omen_01_CustomizationDesc.figurehead_omen_01_CustomizationDesc_C
-// 0x0000 (0x00E8 - 0x00E8)
+// 0x0000 (0x0108 - 0x0108)
 class Ufigurehead_omen_01_CustomizationDesc_C : public UShipCustomizationDesc
 {
 public:

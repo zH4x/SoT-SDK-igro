@@ -1,6 +1,6 @@
 #pragma once
 
-// Sea of Thieves (2.0) SDK
+// Sea of Thieves (2) SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
@@ -161,6 +161,27 @@ struct FTestActionStateConstructionInfoWithObjPointers : public FActionStateCons
 	class UObject*                                     ObjPointer;                                               // 0x0028(0x0008) (ZeroConstructor, IsPlainOldData)
 	struct FInnerWithObjTestStruct                     Inner;                                                    // 0x0030(0x0008)
 	TArray<class UObject*>                             Array;                                                    // 0x0038(0x0010) (ZeroConstructor)
+};
+
+// ScriptStruct ActionStateMachine.EventWaitingToSpawnActionStateEndedClient
+// 0x0001
+struct FEventWaitingToSpawnActionStateEndedClient
+{
+	unsigned char                                      UnknownData00[0x1];                                       // 0x0000(0x0001) MISSED OFFSET
+};
+
+// ScriptStruct ActionStateMachine.EventWaitingToSpawnActionStateStartedClient
+// 0x0001
+struct FEventWaitingToSpawnActionStateStartedClient
+{
+	unsigned char                                      UnknownData00[0x1];                                       // 0x0000(0x0001) MISSED OFFSET
+};
+
+// ScriptStruct ActionStateMachine.EventFirstPersonAnimaticActionStateEndedClient
+// 0x0001
+struct FEventFirstPersonAnimaticActionStateEndedClient
+{
+	unsigned char                                      UnknownData00[0x1];                                       // 0x0000(0x0001) MISSED OFFSET
 };
 
 // ScriptStruct ActionStateMachine.NullActionStateConstructionInfo

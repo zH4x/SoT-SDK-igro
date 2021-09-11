@@ -1,6 +1,6 @@
 #pragma once
 
-// Sea of Thieves (2.0) SDK
+// Sea of Thieves (2) SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
@@ -15,7 +15,7 @@ namespace SDK
 //---------------------------------------------------------------------------
 
 // BlueprintGeneratedClass Proposal_CompanyTales_GH_Rank0.Proposal_CompanyTales_GH_Rank0_C
-// 0x0000 (0x0140 - 0x0140)
+// 0x0000 (0x0138 - 0x0138)
 class UProposal_CompanyTales_GH_Rank0_C : public UVoyageProposalDesc
 {
 public:

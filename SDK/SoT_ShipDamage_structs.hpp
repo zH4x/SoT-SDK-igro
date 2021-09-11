@@ -1,6 +1,6 @@
 #pragma once
 
-// Sea of Thieves (2.0) SDK
+// Sea of Thieves (2) SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
@@ -81,10 +81,11 @@ struct FDamageZoneDamageLevelChanged
 };
 
 // ScriptStruct ShipDamage.AppliedDamageToShipEvent
-// 0x0008
+// 0x0010
 struct FAppliedDamageToShipEvent
 {
 	class UClass*                                      ShipType;                                                 // 0x0000(0x0008) (ZeroConstructor, IsPlainOldData)
+	class AActor*                                      Ship;                                                     // 0x0008(0x0008) (ZeroConstructor, IsPlainOldData)
 };
 
 }

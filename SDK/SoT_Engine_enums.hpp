@@ -1,6 +1,6 @@
 #pragma once
 
-// Sea of Thieves (2.0) SDK
+// Sea of Thieves (2) SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
@@ -12,6 +12,17 @@ namespace SDK
 //Enums
 //---------------------------------------------------------------------------
 
+// Enum Engine.EAttachLocation
+enum class EAttachLocation : uint8_t
+{
+	EAttachLocation__KeepRelativeOffset = 0,
+	EAttachLocation__KeepWorldPosition = 1,
+	EAttachLocation__SnapToTarget  = 2,
+	EAttachLocation__SnapToTargetIncludingScale = 3,
+	EAttachLocation__EAttachLocation_MAX = 4
+};
+
+
 // Enum Engine.EEndPlayReason
 enum class EEndPlayReason : uint8_t
 {
@@ -21,17 +32,6 @@ enum class EEndPlayReason : uint8_t
 	EEndPlayReason__RemovedFromWorld = 3,
 	EEndPlayReason__Quit           = 4,
 	EEndPlayReason__EEndPlayReason_MAX = 5
-};
-
-
-// Enum Engine.EAttachLocation
-enum class EAttachLocation : uint8_t
-{
-	EAttachLocation__KeepRelativeOffset = 0,
-	EAttachLocation__KeepWorldPosition = 1,
-	EAttachLocation__SnapToTarget  = 2,
-	EAttachLocation__SnapToTargetIncludingScale = 3,
-	EAttachLocation__EAttachLocation_MAX = 4
 };
 
 
@@ -129,6 +129,18 @@ enum class ENavPathEvent : uint8_t
 	ENavPathEvent__RePathFailed    = 5,
 	ENavPathEvent__Custom          = 6,
 	ENavPathEvent__ENavPathEvent_MAX = 7
+};
+
+
+// Enum Engine.EComponentNetDormancy
+enum class EComponentNetDormancy : uint8_t
+{
+	EComponentNetDormancy__NotSupported = 0,
+	EComponentNetDormancy__Awake   = 1,
+	EComponentNetDormancy__FollowOwner = 2,
+	EComponentNetDormancy__Dormant = 3,
+	EComponentNetDormancy__Count   = 4,
+	EComponentNetDormancy__EComponentNetDormancy_MAX = 5
 };
 
 
@@ -353,6 +365,46 @@ enum class EQuitPreference : uint8_t
 };
 
 
+// Enum Engine.ENodeAdvancedPins
+enum class ENodeAdvancedPins : uint8_t
+{
+	ENodeAdvancedPins__NoPins      = 0,
+	ENodeAdvancedPins__Shown       = 1,
+	ENodeAdvancedPins__Hidden      = 2,
+	ENodeAdvancedPins__ENodeAdvancedPins_MAX = 3
+};
+
+
+// Enum Engine.ENodeTitleType
+enum class ENodeTitleType : uint8_t
+{
+	ENodeTitleType__FullTitle      = 0,
+	ENodeTitleType__ListView       = 1,
+	ENodeTitleType__EditableTitle  = 2,
+	ENodeTitleType__MenuTitle      = 3,
+	ENodeTitleType__MAX_TitleTypes = 4,
+	ENodeTitleType__ENodeTitleType_MAX = 5
+};
+
+
+// Enum Engine.EEdGraphPinDirection
+enum class EEdGraphPinDirection : uint8_t
+{
+	EGPD_Input                     = 0,
+	EGPD_Output                    = 1,
+	EGPD_MAX                       = 2
+};
+
+
+// Enum Engine.EBlueprintPinStyleType
+enum class EBlueprintPinStyleType : uint8_t
+{
+	BPST_Original                  = 0,
+	BPST_VariantA                  = 1,
+	BPST_MAX                       = 2
+};
+
+
 // Enum Engine.EViewModeIndex
 enum class EViewModeIndex : uint8_t
 {
@@ -440,9 +492,10 @@ enum class ENetworkFailure : uint8_t
 	ENetworkFailure__PlayerDeemedInactive = 14,
 	ENetworkFailure__CrewMigrationRequested = 15,
 	ENetworkFailure__ServerAtMatchmakingCapacity = 16,
-	ENetworkFailure__ServerShuttingDown = 17,
-	ENetworkFailure__CrewSessionLost = 18,
-	ENetworkFailure__ENetworkFailure_MAX = 19
+	ENetworkFailure__ServerShuttingDownWhilstMigrationOngoing = 17,
+	ENetworkFailure__ServerShuttingDown = 18,
+	ENetworkFailure__CrewSessionLost = 19,
+	ENetworkFailure__ENetworkFailure_MAX = 20
 };
 
 
@@ -455,46 +508,6 @@ enum class EInputEvent : uint8_t
 	IE_DoubleClick                 = 3,
 	IE_Axis                        = 4,
 	IE_MAX                         = 5
-};
-
-
-// Enum Engine.ENodeAdvancedPins
-enum class ENodeAdvancedPins : uint8_t
-{
-	ENodeAdvancedPins__NoPins      = 0,
-	ENodeAdvancedPins__Shown       = 1,
-	ENodeAdvancedPins__Hidden      = 2,
-	ENodeAdvancedPins__ENodeAdvancedPins_MAX = 3
-};
-
-
-// Enum Engine.ENodeTitleType
-enum class ENodeTitleType : uint8_t
-{
-	ENodeTitleType__FullTitle      = 0,
-	ENodeTitleType__ListView       = 1,
-	ENodeTitleType__EditableTitle  = 2,
-	ENodeTitleType__MenuTitle      = 3,
-	ENodeTitleType__MAX_TitleTypes = 4,
-	ENodeTitleType__ENodeTitleType_MAX = 5
-};
-
-
-// Enum Engine.EEdGraphPinDirection
-enum class EEdGraphPinDirection : uint8_t
-{
-	EGPD_Input                     = 0,
-	EGPD_Output                    = 1,
-	EGPD_MAX                       = 2
-};
-
-
-// Enum Engine.EBlueprintPinStyleType
-enum class EBlueprintPinStyleType : uint8_t
-{
-	BPST_Original                  = 0,
-	BPST_VariantA                  = 1,
-	BPST_MAX                       = 2
 };
 
 
@@ -629,8 +642,7 @@ enum class ENetDormancy : uint8_t
 	DORM_DormantAll                = 2,
 	DORM_DormantPartial            = 3,
 	DORM_Initial                   = 4,
-	DORN_MAX                       = 5,
-	ENetDormancy_MAX               = 6
+	DORM_MAX                       = 5
 };
 
 
@@ -1065,7 +1077,8 @@ enum class EBlendMode : uint8_t
 	BLEND_LowResTranslucent        = 6,
 	BLEND_AlphaBlend               = 7,
 	BLEND_TranslucentUI            = 8,
-	BLEND_MAX                      = 9
+	BLEND_PremultipliedAlpha       = 9,
+	BLEND_MAX                      = 10
 };
 
 
@@ -1085,6 +1098,25 @@ enum class ESceneDepthPriorityGroup : uint8_t
 	SDPG_World                     = 0,
 	SDPG_Foreground                = 1,
 	SDPG_MAX                       = 2
+};
+
+
+// Enum Engine.EDetachmentRule
+enum class EDetachmentRule : uint8_t
+{
+	EDetachmentRule__KeepRelative  = 0,
+	EDetachmentRule__KeepWorld     = 1,
+	EDetachmentRule__EDetachmentRule_MAX = 2
+};
+
+
+// Enum Engine.EAttachmentRule
+enum class EAttachmentRule : uint8_t
+{
+	EAttachmentRule__KeepRelative  = 0,
+	EAttachmentRule__KeepWorld     = 1,
+	EAttachmentRule__SnapToTarget  = 2,
+	EAttachmentRule__EAttachmentRule_MAX = 3
 };
 
 
@@ -1315,7 +1347,8 @@ enum class ECameraAnimPlaySpace : uint8_t
 	ECameraAnimPlaySpace__World    = 1,
 	ECameraAnimPlaySpace__UserDefined = 2,
 	ECameraAnimPlaySpace__RARE_CutsceneWorld = 3,
-	ECameraAnimPlaySpace__ECameraAnimPlaySpace_MAX = 4
+	ECameraAnimPlaySpace__RARE_RelativeToWorldLocation = 4,
+	ECameraAnimPlaySpace__ECameraAnimPlaySpace_MAX = 5
 };
 
 
@@ -1810,7 +1843,8 @@ enum class EAnimationMode : uint8_t
 {
 	EAnimationMode__AnimationBlueprint = 0,
 	EAnimationMode__AnimationSingleNode = 1,
-	EAnimationMode__EAnimationMode_MAX = 2
+	EAnimationMode__AnimationCustomMode = 2,
+	EAnimationMode__EAnimationMode_MAX = 3
 };
 
 
@@ -3186,7 +3220,9 @@ enum class ESceneTextureId : uint8_t
 	PPI_AmbientOcclusion           = 23,
 	PPI_CustomStencil              = 24,
 	PPI_PlanarReflections          = 25,
-	PPI_MAX                        = 26
+	PPI_Mask                       = 26,
+	PPI_PreviousMask               = 27,
+	PPI_MAX                        = 28
 };
 
 
@@ -3457,6 +3493,32 @@ enum class EModuleType : uint8_t
 };
 
 
+// Enum Engine.EDragOnLocalVelocityGroupName
+enum class EDragOnLocalVelocityGroupName : uint8_t
+{
+	DragOnLocalVelocityGroupB      = 0,
+	DragOnLocalVelocityGroupC      = 1,
+	DragOnLocalVelocityGroupD      = 2,
+	DragOnLocalVelocityGroupE      = 3,
+	DragOnLocalVelocityGroupReplacement = 4,
+	DragOnLocalVelocityGroup_MAX   = 5,
+	EDragOnLocalVelocityGroupName_MAX = 6
+};
+
+
+// Enum Engine.EDragCoefficientGroupName
+enum class EDragCoefficientGroupName : uint8_t
+{
+	DragCoefficientGroupB          = 0,
+	DragCoefficientGroupC          = 1,
+	DragCoefficientGroupD          = 2,
+	DragCoefficientGroupE          = 3,
+	DragCoefficientGroupReplacement = 4,
+	DragCoefficientGroup_MAX       = 5,
+	EDragCoefficientGroupName_MAX  = 6
+};
+
+
 // Enum Engine.EAttractorParticleSelectionMethod
 enum class EAttractorParticleSelectionMethod : uint8_t
 {
@@ -3554,6 +3616,52 @@ enum class EStartColorGroupsName : uint8_t
 	StartColorReplacement          = 4,
 	StartColor_MAX                 = 5,
 	EStartColorGroupsName_MAX      = 6
+};
+
+
+// Enum Engine.EGPUParticleCollisionEventLimit
+enum class EGPUParticleCollisionEventLimit : uint8_t
+{
+	EGPUParticleCollisionEventLimit__OnlyOnFirstCollision = 0,
+	EGPUParticleCollisionEventLimit__OnlyOnFirstTwoCollisions = 1,
+	EGPUParticleCollisionEventLimit__Unlimited = 2,
+	EGPUParticleCollisionEventLimit__EGPUParticleCollisionEventLimit_MAX = 3
+};
+
+
+// Enum Engine.ESpawnEventGroupNames
+enum class ESpawnEventGroupNames : uint8_t
+{
+	SpawnEventGroupB               = 0,
+	SpawnEventGroupC               = 1,
+	SpawnEventGroupD               = 2,
+	SpawnEventGroupE               = 3,
+	SpawnEventGroupReplacemnent    = 4,
+	SpawnEventGroup_MAX            = 5,
+	ESpawnEventGroupNames_MAX      = 6
+};
+
+
+// Enum Engine.EFFTWaterKillPointLocation
+enum class EFFTWaterKillPointLocation : uint8_t
+{
+	FFTWaterKillPointLocation_LowerBound = 0,
+	FFTWaterKillPointLocation_Center = 1,
+	FFTWaterKillPointLocation_UpperBound = 2,
+	FFTWaterKillPointLocation_MAX  = 3
+};
+
+
+// Enum Engine.EFFTWaterKillPointGroupName
+enum class EFFTWaterKillPointGroupName : uint8_t
+{
+	FFTWaterKillPointGroupB        = 0,
+	FFTWaterKillPointGroupC        = 1,
+	FFTWaterKillPointGroupD        = 2,
+	FFTWaterKillPointGroupE        = 3,
+	FFTWaterKillPointGroupReplacement = 4,
+	FFTWaterKillPointGroup_MAX     = 5,
+	EFFTWaterKillPointGroupName_MAX = 6
 };
 
 
@@ -3752,6 +3860,19 @@ enum class EPriorityGroups : uint8_t
 };
 
 
+// Enum Engine.EScreenAlignmentGroupNames
+enum class EScreenAlignmentGroupNames : uint8_t
+{
+	ScreenAlignmentGroupB          = 0,
+	ScreenAlignmentGroupC          = 1,
+	ScreenAlignmentGroupD          = 2,
+	ScreenAlignmentGroupE          = 3,
+	ScreenAlignmentGroupReplacement = 4,
+	ScreenAlignmentGroup_MAX       = 5,
+	EScreenAlignmentGroupNames_MAX = 6
+};
+
+
 // Enum Engine.EEmitterOriginGroupNames
 enum class EEmitterOriginGroupNames : uint8_t
 {
@@ -3799,6 +3920,45 @@ enum class EParticleUVFlipMode : uint8_t
 	EParticleUVFlipMode__RandomFlipVOnly = 6,
 	EParticleUVFlipMode__RandomFlipUVIndependent = 7,
 	EParticleUVFlipMode__EParticleUVFlipMode_MAX = 8
+};
+
+
+// Enum Engine.ERotationAboutArbitraryAxisGroupName
+enum class ERotationAboutArbitraryAxisGroupName : uint8_t
+{
+	RotationAboutArbitraryAxisGroupB = 0,
+	RotationAboutArbitraryAxisGroupC = 1,
+	RotationAboutArbitraryAxisGroupD = 2,
+	RotationAboutArbitraryAxisGroupE = 3,
+	RotationAboutArbitraryAxisGroupReplacement = 4,
+	RotationAboutArbitraryAxisGroup_MAX = 5,
+	ERotationAboutArbitraryAxisGroupName_MAX = 6
+};
+
+
+// Enum Engine.EStartRotationGroupNames
+enum class EStartRotationGroupNames : uint8_t
+{
+	StartRotationGroupB            = 0,
+	StartRotationGroupC            = 1,
+	StartRotationGroupD            = 2,
+	StartRotationGroupE            = 3,
+	StartRotationGroupReplacement  = 4,
+	StartRotationGroup_MAX         = 5,
+	EStartRotationGroupNames_MAX   = 6
+};
+
+
+// Enum Engine.EStartRotationRateGroupNames
+enum class EStartRotationRateGroupNames : uint8_t
+{
+	StartRotationRateGroupB        = 0,
+	StartRotationRateGroupC        = 1,
+	StartRotationRateGroupD        = 2,
+	StartRotationRateGroupE        = 3,
+	StartRotationRateGroupReplacement = 4,
+	StartRotationRateGroup_MAX     = 5,
+	EStartRotationRateGroupNames_MAX = 6
 };
 
 

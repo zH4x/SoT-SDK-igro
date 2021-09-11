@@ -1,6 +1,6 @@
 #pragma once
 
-// Sea of Thieves (2.0) SDK
+// Sea of Thieves (2) SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
@@ -15,11 +15,11 @@ namespace SDK
 //---------------------------------------------------------------------------
 
 // BlueprintGeneratedClass BP_OnlineAthenaPlayerController.BP_OnlineAthenaPlayerController_C
-// 0x0008 (0x1408 - 0x1400)
+// 0x0008 (0x14F8 - 0x14F0)
 class ABP_OnlineAthenaPlayerController_C : public AOnlineAthenaPlayerController
 {
 public:
-	class UBP_Component_Tutorial2019_C*                VisitShopkeepersTutorialComponent;                        // 0x1400(0x0008) (BlueprintVisible, ZeroConstructor, IsPlainOldData)
+	class UBP_Component_Tutorial2019_C*                VisitShopkeepersTutorialComponent;                        // 0x14F0(0x0008) (BlueprintVisible, ZeroConstructor, IsPlainOldData)
 
 	static UClass* StaticClass()
 	{

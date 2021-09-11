@@ -1,6 +1,6 @@
 #pragma once
 
-// Sea of Thieves (2.0) SDK
+// Sea of Thieves (2) SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
@@ -15,7 +15,7 @@ namespace SDK
 //---------------------------------------------------------------------------
 
 // BlueprintGeneratedClass RiddleChapters_TheRiddleOfTheHiddenChests.RiddleChapters_TheRiddleOfTheHiddenChests_C
-// 0x0000 (0x0140 - 0x0140)
+// 0x0000 (0x0138 - 0x0138)
 class URiddleChapters_TheRiddleOfTheHiddenChests_C : public UVoyageProposalDesc
 {
 public:

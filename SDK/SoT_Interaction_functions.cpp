@@ -1,4 +1,4 @@
-// Sea of Thieves (2.0) SDK
+// Sea of Thieves (2) SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
@@ -448,26 +448,6 @@ bool UInteractableInterface::ShouldDrawTooltipInWorldSpace(class AActor* InInter
 }
 
 
-// Function Interaction.InteractableInterface.SetInteractionState
-// (Native, Event, Public, BlueprintCallable, BlueprintEvent)
-// Parameters:
-// TEnumAsByte<EInteractableState> InNewInteractableState         (ConstParm, Parm, ZeroConstructor, IsPlainOldData)
-
-void UInteractableInterface::SetInteractionState(TEnumAsByte<EInteractableState> InNewInteractableState)
-{
-	static auto fn = UObject::FindObject<UFunction>(_xor_("Function Interaction.InteractableInterface.SetInteractionState"));
-
-	struct
-	{
-		TEnumAsByte<EInteractableState> InNewInteractableState;
-	} params;
-
-	params.InNewInteractableState = InNewInteractableState;
-
-	UObject::ProcessEvent(fn, &params);
-}
-
-
 // Function Interaction.InteractableInterface.IsInteractableDisabled
 // (Native, Event, Public, BlueprintCallable, BlueprintEvent, BlueprintPure, Const)
 // Parameters:
@@ -716,27 +696,6 @@ bool UInteractableInterface::CanInteractWithNotificationInputId(class AActor* In
 }
 
 
-// Function Interaction.InteractableInterface.CanInteractionStatesBeSet
-// (Native, Event, Public, BlueprintCallable, BlueprintEvent, BlueprintPure, Const)
-// Parameters:
-// bool                           ReturnValue                    (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData)
-
-bool UInteractableInterface::CanInteractionStatesBeSet()
-{
-	static auto fn = UObject::FindObject<UFunction>(_xor_("Function Interaction.InteractableInterface.CanInteractionStatesBeSet"));
-
-	struct
-	{
-		bool                           ReturnValue;
-	} params;
-
-
-	UObject::ProcessEvent(fn, &params);
-
-	return params.ReturnValue;
-}
-
-
 // Function Interaction.InteractableInterface.CanInteract
 // (Native, Event, Public, BlueprintCallable, BlueprintEvent)
 // Parameters:
@@ -758,6 +717,30 @@ bool UInteractableInterface::CanInteract(class AActor* InInteractor)
 	UObject::ProcessEvent(fn, &params);
 
 	return params.ReturnValue;
+}
+
+
+// Function Interaction.InteractableBlueprintFunctionLibrary.SetInteractionState
+// (Final, Native, Static, Public, BlueprintCallable)
+// Parameters:
+// class AActor*                  InteractableActor              (Parm, ZeroConstructor, IsPlainOldData)
+// TEnumAsByte<EInteractableState> NewInteractableState           (ConstParm, Parm, ZeroConstructor, IsPlainOldData)
+
+void UInteractableBlueprintFunctionLibrary::SetInteractionState(class AActor* InteractableActor, TEnumAsByte<EInteractableState> NewInteractableState)
+{
+	static auto fn = UObject::FindObject<UFunction>(_xor_("Function Interaction.InteractableBlueprintFunctionLibrary.SetInteractionState"));
+
+	struct
+	{
+		class AActor*                  InteractableActor;
+		TEnumAsByte<EInteractableState> NewInteractableState;
+	} params;
+
+	params.InteractableActor = InteractableActor;
+	params.NewInteractableState = NewInteractableState;
+
+	static auto defaultObj = StaticClass()->CreateDefaultObject();
+	defaultObj->ProcessEvent(fn, &params);
 }
 
 

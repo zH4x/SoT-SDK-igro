@@ -1,6 +1,6 @@
 #pragma once
 
-// Sea of Thieves (2.0) SDK
+// Sea of Thieves (2) SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
@@ -16,6 +16,15 @@ namespace SDK
 //---------------------------------------------------------------------------
 //Script Structs
 //---------------------------------------------------------------------------
+
+// ScriptStruct AnimGraphRuntime.AnimNode_CopyPoseFromMesh
+// 0x0090 (0x00C0 - 0x0030)
+struct FAnimNode_CopyPoseFromMesh : public FAnimNode_Base
+{
+	class USkeletalMeshComponent*                      SourceMeshComponent;                                      // 0x0030(0x0008) (BlueprintVisible, ExportObject, ZeroConstructor, Transient, InstancedReference, IsPlainOldData)
+	bool                                               bUseAttachedParent;                                       // 0x0038(0x0001) (Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData)
+	unsigned char                                      UnknownData00[0x87];                                      // 0x0039(0x0087) MISSED OFFSET
+};
 
 // ScriptStruct AnimGraphRuntime.AnimNode_SkeletalControlBase
 // 0x0028 (0x0058 - 0x0030)

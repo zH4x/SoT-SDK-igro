@@ -1,6 +1,6 @@
 #pragma once
 
-// Sea of Thieves (2.0) SDK
+// Sea of Thieves (2) SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
@@ -15,7 +15,7 @@ namespace SDK
 //---------------------------------------------------------------------------
 
 // BlueprintGeneratedClass BP_Blunderbuss.BP_Blunderbuss_C
-// 0x0020 (0x0A40 - 0x0A20)
+// 0x0030 (0x0A50 - 0x0A20)
 class ABP_Blunderbuss_C : public AProjectileWeapon
 {
 public:
@@ -24,6 +24,8 @@ public:
 	TEnumAsByte<EEmitterRelationship>                  sfx_relationship;                                         // 0x0A30(0x0001) (Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData)
 	unsigned char                                      UnknownData00[0x7];                                       // 0x0A31(0x0007) MISSED OFFSET
 	class UMaterialInstanceDynamic*                    DynamicMaterial;                                          // 0x0A38(0x0008) (Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData)
+	class UObject*                                     FiringVFX3rdPerson;                                       // 0x0A40(0x0008) (Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData)
+	class UWwiseEvent*                                 Blunderbuss_Firing_sfx_3rd_person;                        // 0x0A48(0x0008) (Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData)
 
 	static UClass* StaticClass()
 	{

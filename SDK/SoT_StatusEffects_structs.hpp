@@ -1,6 +1,6 @@
 #pragma once
 
-// Sea of Thieves (2.0) SDK
+// Sea of Thieves (2) SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
@@ -20,15 +20,15 @@ namespace SDK
 // 0x0004
 struct FStatusDescriptor
 {
-	float                                              Intensity;                                                // 0x0000(0x0004) (Edit, ZeroConstructor, IsPlainOldData)
+	float                                              Intensity;                                                // 0x0000(0x0004) (Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData)
 };
 
 // ScriptStruct StatusEffects.Status
 // 0x0018
 struct FStatus
 {
-	TArray<class UClass*>                              Type;                                                     // 0x0000(0x0010) (Edit, ZeroConstructor)
-	struct FStatusDescriptor                           Descriptor;                                               // 0x0010(0x0004) (Edit)
+	TArray<class UClass*>                              Type;                                                     // 0x0000(0x0010) (Edit, BlueprintVisible, ZeroConstructor)
+	struct FStatusDescriptor                           Descriptor;                                               // 0x0010(0x0004) (Edit, BlueprintVisible)
 	unsigned char                                      UnknownData00[0x4];                                       // 0x0014(0x0004) MISSED OFFSET
 };
 
@@ -70,11 +70,34 @@ struct FActiveStatusEffect
 	unsigned char                                      UnknownData01[0x17];                                      // 0x0039(0x0017) MISSED OFFSET
 };
 
+// ScriptStruct StatusEffects.EventAppliedStatusToTargets
+// 0x0020
+struct FEventAppliedStatusToTargets
+{
+	TArray<class UClass*>                              StatusApplied;                                            // 0x0000(0x0010) (ZeroConstructor)
+	TArray<class AActor*>                              Targets;                                                  // 0x0010(0x0010) (ZeroConstructor)
+};
+
 // ScriptStruct StatusEffects.StatusEffectPersistenceKey
 // 0x0018
 struct FStatusEffectPersistenceKey
 {
 	struct FStatus                                     AppliedStatuses;                                          // 0x0000(0x0018)
+};
+
+// ScriptStruct StatusEffects.ApplyStatusEvent
+// 0x0018
+struct FApplyStatusEvent
+{
+	struct FStatus                                     StatusToApply;                                            // 0x0000(0x0018)
+};
+
+// ScriptStruct StatusEffects.BuffedTargetData
+// 0x0018
+struct FBuffedTargetData
+{
+	TWeakObjectPtr<class AActor>                       ActorBuffed;                                              // 0x0000(0x0008) (ZeroConstructor, IsPlainOldData)
+	TScriptInterface<class UStatusEffectRecipientInterface> StatusEffectRecipient;                                    // 0x0008(0x0010) (ZeroConstructor, IsPlainOldData)
 };
 
 // ScriptStruct StatusEffects.StatusDeactivatedEvent

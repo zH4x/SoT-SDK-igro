@@ -1,6 +1,6 @@
 #pragma once
 
-// Sea of Thieves (2.0) SDK
+// Sea of Thieves (2) SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
@@ -10,9 +10,11 @@
 #include "SoT_NaturalDisasters_enums.hpp"
 #include "SoT_CoreUObject_classes.hpp"
 #include "SoT_Engine_classes.hpp"
-#include "SoT_Kraken_classes.hpp"
 #include "SoT_Maths_classes.hpp"
 #include "SoT_Athena_classes.hpp"
+#include "SoT_ResourceContentionFramework_classes.hpp"
+#include "SoT_StatusEffects_classes.hpp"
+#include "SoT_Kraken_classes.hpp"
 
 namespace SDK
 {
@@ -75,14 +77,12 @@ struct FWeightedAshenLordVolcanoProjectile
 	class UClass*                                      ProjectileClass;                                          // 0x00C8(0x0008) (Edit, ZeroConstructor, DisableEditOnInstance, IsPlainOldData)
 };
 
-// ScriptStruct NaturalDisasters.VolcanoStateData
-// 0x000C
-struct FVolcanoStateData
+// ScriptStruct NaturalDisasters.AshenLordWorldEndCloudAnimation
+// 0x0008
+struct FAshenLordWorldEndCloudAnimation
 {
-	TEnumAsByte<EVolcanoState>                         State;                                                    // 0x0000(0x0001) (ZeroConstructor, IsPlainOldData)
-	unsigned char                                      UnknownData00[0x3];                                       // 0x0001(0x0003) MISSED OFFSET
-	float                                              StateDuration;                                            // 0x0004(0x0004) (ZeroConstructor, IsPlainOldData)
-	float                                              PercentageOfMaxTargetingRange;                            // 0x0008(0x0004) (ZeroConstructor, IsPlainOldData)
+	float                                              ServerStartTime;                                          // 0x0000(0x0004) (ZeroConstructor, IsPlainOldData)
+	float                                              ServerLifeTime;                                           // 0x0004(0x0004) (ZeroConstructor, IsPlainOldData)
 };
 
 // ScriptStruct NaturalDisasters.EarthquakeForceFeedbackOption
@@ -116,6 +116,25 @@ struct FGeyserSpawnAngleOption
 	float                                              Weight;                                                   // 0x0000(0x0004) (Edit, ZeroConstructor, DisableEditOnInstance, IsPlainOldData)
 	float                                              Direction;                                                // 0x0004(0x0004) (Edit, ZeroConstructor, DisableEditOnInstance, IsPlainOldData)
 	float                                              Range;                                                    // 0x0008(0x0004) (Edit, ZeroConstructor, DisableEditOnInstance, IsPlainOldData)
+};
+
+// ScriptStruct NaturalDisasters.VolcanoStateData
+// 0x000C
+struct FVolcanoStateData
+{
+	TEnumAsByte<EVolcanoState>                         State;                                                    // 0x0000(0x0001) (ZeroConstructor, IsPlainOldData)
+	unsigned char                                      UnknownData00[0x3];                                       // 0x0001(0x0003) MISSED OFFSET
+	float                                              StateDuration;                                            // 0x0004(0x0004) (ZeroConstructor, IsPlainOldData)
+	float                                              PercentageOfMaxTargetingRange;                            // 0x0008(0x0004) (ZeroConstructor, IsPlainOldData)
+};
+
+// ScriptStruct NaturalDisasters.VolcanoProjectileData
+// 0x001C
+struct FVolcanoProjectileData
+{
+	int                                                WeightedVolcanoProjectileIndex;                           // 0x0000(0x0004) (ZeroConstructor, IsPlainOldData)
+	struct FVector                                     LaunchVelocity;                                           // 0x0004(0x000C) (ZeroConstructor, IsPlainOldData)
+	struct FVector                                     RotationRate;                                             // 0x0010(0x000C) (ZeroConstructor, IsPlainOldData)
 };
 
 // ScriptStruct NaturalDisasters.VolcanoTarget

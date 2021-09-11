@@ -1,6 +1,6 @@
 #pragma once
 
-// Sea of Thieves (2.0) SDK
+// Sea of Thieves (2.1) SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
@@ -15,7 +15,7 @@ namespace SDK
 //---------------------------------------------------------------------------
 
 // BlueprintGeneratedClass BP_gmp_repair_wood_02_a_Wieldable.BP_gmp_repair_wood_02_a_Wieldable_C
-// 0x0000 (0x07E8 - 0x07E8)
+// 0x0000 (0x07B8 - 0x07B8)
 class ABP_gmp_repair_wood_02_a_Wieldable_C : public ABP_WoodPlank_C
 {
 public:

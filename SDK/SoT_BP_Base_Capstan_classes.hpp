@@ -1,6 +1,6 @@
 #pragma once
 
-// Sea of Thieves (2.0) SDK
+// Sea of Thieves (2) SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
@@ -15,13 +15,13 @@ namespace SDK
 //---------------------------------------------------------------------------
 
 // BlueprintGeneratedClass BP_Base_Capstan.BP_Base_Capstan_C
-// 0x0018 (0x07F0 - 0x07D8)
+// 0x0018 (0x07D0 - 0x07B8)
 class ABP_Base_Capstan_C : public ACapstan
 {
 public:
-	struct FPointerToUberGraphFrame                    UberGraphFrame;                                           // 0x07D8(0x0008) (ZeroConstructor, Transient, DuplicateTransient)
-	class USphereComponent*                            ProjectileCollision;                                      // 0x07E0(0x0008) (BlueprintVisible, ZeroConstructor, IsPlainOldData)
-	class UWwiseEmitterComponent*                      NewVar_1;                                                 // 0x07E8(0x0008) (Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData)
+	struct FPointerToUberGraphFrame                    UberGraphFrame;                                           // 0x07B8(0x0008) (ZeroConstructor, Transient, DuplicateTransient)
+	class USphereComponent*                            ProjectileCollision;                                      // 0x07C0(0x0008) (BlueprintVisible, ZeroConstructor, IsPlainOldData)
+	class UWwiseEmitterComponent*                      NewVar_1;                                                 // 0x07C8(0x0008) (Edit, BlueprintVisible, ZeroConstructor, DisableEditOnInstance, IsPlainOldData)
 
 	static UClass* StaticClass()
 	{
@@ -41,7 +41,6 @@ public:
 	void IK_Limb_Update_Strength(TEnumAsByte<EIKLimbName> LimbId, float LocationStrength, float RotationStrength);
 	void IK_Limb_Active(TEnumAsByte<EIKLimbName> LimbId, bool Active, TEnumAsByte<ELimbIKSpace> CoordinateSpace);
 	void IK_Limb_Stretch(float ArmStretch, float SpineStretch, float LegStretch);
-	void OnCapstanDescLoaded(class UCapstanDescAsset* CapstanDesc);
 	void ExecuteUbergraph_BP_Base_Capstan(int EntryPoint);
 };
 
